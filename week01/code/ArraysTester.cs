@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 public static class ArraysTester {
     /// <summary>
     /// Entry point for the tests
@@ -36,10 +38,21 @@ public static class ArraysTester {
     {
         // TODO Problem 1 Start
         // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // step by step before you write the code. The plan should be clear enough that it could be implemented by another person.
 
-        return new double[0]; // replace this return statement with your own
+        // create a list of integers called multiples
+        double[] multiples = new double[length];
+        // The method has 2 parameters, first is the starting number(number) and second is the number of multiples(length)
+        
+        // the function should iterate i times, from 1 to number defined by the length argument
+        // instantiate a variable multiple and assign it the value num * i
+        // add multiple to the list called multiples
+        for (int i=1; i <= length; ++i) {
+            double multiple = number * i;
+            multiples.Append(multiple);
+        }
+        // replace this return statement with your own 
+        return multiples; 
     }
     
     /// <summary>
@@ -57,5 +70,11 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
+        // instantiate a variable slice[]
+        // assign slice the value data.GetRange(amount, data.Count - amount)
+        // insert slice into data at the begining of the list
+        List<int> slice = new List<int>();
+        slice = data.GetRange(amount, data.Count - amount);
+        data.InsertRange(0, slice);
     }
 }
