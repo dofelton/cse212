@@ -41,7 +41,9 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could be implemented by another person.
 
         // create a list of integers called multiples
+        List<double> list = new List<double>();
         double[] multiples = new double[length];
+
         // The method has 2 parameters, first is the starting number(number) and second is the number of multiples(length)
         
         // the function should iterate i times, from 1 to number defined by the length argument
@@ -49,7 +51,8 @@ public static class ArraysTester {
         // add multiple to the list called multiples
         for (int i=1; i <= length; ++i) {
             double multiple = number * i;
-            multiples.Add(multiple);
+            list.Add(multiple);
+            multiples = list.ToArray();
         }
         // replace this return statement with your own 
         return multiples; 
@@ -74,7 +77,7 @@ public static class ArraysTester {
         // assign slice the value data.GetRange(amount, data.Count - amount)
         // insert slice into data at the begining of the list
         List<int> slice = new List<int>();
-        slice = data.GetRange(amount, data.Count - amount);
+        slice = data.GetRange(-amount, data.Count - amount);
         data.InsertRange(0, slice);
     }
 }
