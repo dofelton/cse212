@@ -49,7 +49,7 @@ public static class ArraysTester {
         // add multiple to the list called multiples
         for (int i=1; i <= length; ++i) {
             double multiple = number * i;
-            multiples.Append(multiple);
+            multiples.Add(multiple);
         }
         // replace this return statement with your own 
         return multiples; 
