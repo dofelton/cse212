@@ -8,20 +8,31 @@
         // Test Cases
 
         // Test 1
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: There are three bills to be paid. bills 1 and 2 are of equal priority but bill 3 must be paid first
+        // Expected Result: Bill3
         Console.WriteLine("Test 1");
+        var tasks = new PriorityQueue();
+        tasks.Enqueue("Bill1", 1);
+        tasks.Enqueue("Bill2", 1);
+        tasks.Enqueue("Bill3", 2);
+        Console.WriteLine(tasks.Dequeue());
 
-        // Defect(s) Found: 
+        // Defect(s) Found: Method Dequeue was not removing items and was not iterateing through complete array
 
         Console.WriteLine("---------");
 
         // Test 2
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: Four bills must be paid, two of them are more important
+        // Expected Result: Bill2
         Console.WriteLine("Test 2");
+        var tasks2 = new PriorityQueue();
+        tasks2.Enqueue("Bill1", 1);
+        tasks2.Enqueue("Bill2", 2);
+        tasks2.Enqueue("Bill3", 1);
+        tasks2.Enqueue("Bill4", 2);
 
-        // Defect(s) Found: 
+        Console.WriteLine(tasks2.Dequeue());
+        // Defect(s) Found: None
 
         Console.WriteLine("---------");
 

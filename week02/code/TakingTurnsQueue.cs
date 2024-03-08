@@ -35,10 +35,8 @@ public class TakingTurnsQueue {
         if (_people.IsEmpty())
             Console.WriteLine("No one in the queue.");
         else {
-            Console.WriteLine($"before dequeue {_people}");
             Person person = _people.Dequeue();
-            Console.WriteLine($"after dequeue {_people}");
-            if (person.Turns > 1) {
+            if (person.Turns > 1 || person.Turns <= 0) {
                 person.Turns -= 1;
                 _people.Enqueue(person);
 
