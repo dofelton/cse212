@@ -15,7 +15,7 @@
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found: The Enqueue function was inserting person at index 0 so this was actually acting like a stack instead of a queue, changed to .Add
 
         Console.WriteLine("---------");
 
