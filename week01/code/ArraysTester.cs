@@ -76,8 +76,10 @@ public static class ArraysTester {
         // instantiate a variable slice[]
         // assign slice the value data.GetRange(amount, data.Count - amount)
         // insert slice into data at the begining of the list
-        List<int> slice = new List<int>();
-        slice = data.GetRange(-amount, data.Count - amount);
-        data.InsertRange(0, slice);
+        // List<int> slice = new List<int>();
+        int start = data.Count - amount;
+        List<int> slice1 = data.GetRange(start, amount);
+        data.RemoveRange(start, amount);
+        data.InsertRange(0, slice1);
     }
 }
