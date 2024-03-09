@@ -38,7 +38,7 @@ public static class MysteryStack2 {
 
                     res = op1 / op2;
                 }
-
+                
                 stack.Push(res);
             }
             else if (IsFloat(item)) {
