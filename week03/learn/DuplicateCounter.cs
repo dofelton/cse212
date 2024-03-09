@@ -25,6 +25,9 @@
     private static int CountDuplicates(int[] data)
     {
         // Add code here.
-        return 0;
+        var set1 = new HashSet<int>(data);
+        var dupes = data.Intersect(set1).ToHashSet();
+        
+        return dupes.Count();
     }
 }
