@@ -3,6 +3,7 @@ using System.Text.Json;
 public static class SetsAndMapsTester {
     public static void Run() {
         // Problem 1: Find Pairs with Sets
+               
         Console.WriteLine("\n=========== Finding Pairs TESTS ===========");
         DisplayPairs(new[] { "am", "at", "ma", "if", "fi" });
         // ma & am
@@ -25,7 +26,7 @@ public static class SetsAndMapsTester {
         // 32 & 23
         // 94 & 49
         // 31 & 13
-
+     
         // Problem 2: Degree Summary
         // Sample Test Cases (may not be comprehensive) 
         Console.WriteLine("\n=========== Census TESTS ===========");
@@ -111,7 +112,30 @@ public static class SetsAndMapsTester {
         // To display the pair correctly use something like:
         // Console.WriteLine($"{word} & {pair}");
         // Each pair of words should displayed on its own line.
-    }
+        // loop(iterate) through the list of words
+        // for each word, reverse the word and check to see if it is in the orginal list of strings
+        // if reversed word is in the set add it to the result list
+
+         HashSet<string> wordSet = new HashSet<string>(words);
+            HashSet<string> pairs = new HashSet<string>();
+
+            foreach (string word in words)
+            {
+                if (word[0] != word[1])
+                {
+                    string reverseWord = new string(new char[] {word[1], word[0]});
+
+                    if (wordSet.Contains(reverseWord))
+                    {
+                        pairs.Add(word);
+                        pairs.Add(reverseWord);
+                    }                    
+                }
+            }
+            foreach (string pair in pairs)
+            {
+            Console.WriteLine(pair);
+    }}
 
     /// <summary>
     /// Read a census file and summarize the degrees (education)
@@ -132,6 +156,14 @@ public static class SetsAndMapsTester {
         foreach (var line in File.ReadLines(filename)) {
             var fields = line.Split(",");
             // Todo Problem 2 - ADD YOUR CODE HERE
+            string degree = fields[3].Trim();
+            if (degrees.ContainsKey(degree))
+            {
+                degrees[degree]++;
+            }
+            else{
+                degrees[degree] = 1;
+            }
         }
 
         return degrees;
@@ -158,7 +190,39 @@ public static class SetsAndMapsTester {
     /// #############
     private static bool IsAnagram(string word1, string word2) {
         // Todo Problem 3 - ADD YOUR CODE HERE
-        return false;
+        // remove spaces and uppercase to compare
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
+
+        // check if word lengths are equal
+        if (word1.Length != word2.Length)
+            return false;
+        
+        // create dictionaries for char counts
+        Dictionary<char, int> charCount1 = new Dictionary<char, int>();
+        foreach (char c in word1)
+        {
+            if (charCount1.ContainsKey(c))
+                charCount1[c]++;
+            else
+                charCount1[c] = 1;
+        }
+        Dictionary<char, int> charCount2 = new Dictionary<char, int>();
+        foreach (char c in word1)
+        {
+            if (charCount2.ContainsKey(c))
+                charCount2[c]++;
+            else
+                charCount2[c] = 1;
+        }
+
+        // check if dictionaries are equal
+        foreach (char c in charCount1.Keys)
+        {
+            if (!charCount2.ContainsKey(c) || charCount1[c] != charCount2[c])
+            return false;
+        }
+        return true;
     }
 
     /// <summary>
@@ -230,10 +294,19 @@ public static class SetsAndMapsTester {
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
         var featureCollection = JsonSerializer.Deserialize<FeatureCollection>(json, options);
-
+        Console.WriteLine("Start");
+        Console.WriteLine(featureCollection);
         // TODO:
         // 1. Add code in FeatureCollection.cs to describe the JSON using classes and properties 
         // on those classes so that the call to Deserialize above works properly.
+        
         // 2. Add code below to print out each place a earthquake has happened today and its magitude.
+        // foreach (FeatureCollection quake in FeatureCollection)
+        // {
+        Console.WriteLine($"{FeatureCollection.Place}- Mag {FeatureCollection.Mag} ");
+        // }
+    
+
+        }
     }
-}
+    

@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 /// <summary>
 /// Defines a maze using a dictionary. The dictionary is provided by the
 /// user when the Maze object is created. The dictionary will contain the
@@ -18,6 +20,7 @@ public class Maze {
     private readonly Dictionary<ValueTuple<int, int>, bool[]> _mazeMap;
     private int _currX = 1;
     private int _currY = 1;
+    private (int, int) currentPosition;
 
     public Maze(Dictionary<ValueTuple<int, int>, bool[]> mazeMap) {
         _mazeMap = mazeMap;
@@ -30,6 +33,15 @@ public class Maze {
     /// </summary>
     public void MoveLeft() {
         // FILL IN CODE
+        currentPosition = (_currX, _currY);
+        Console.WriteLine(currentPosition);
+        if (_mazeMap[currentPosition][0])
+        {
+            _currX -= 1;
+        }
+        else{
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -38,6 +50,16 @@ public class Maze {
     /// </summary>
     public void MoveRight() {
         // FILL IN CODE
+        currentPosition = (_currX, _currY);
+        Console.WriteLine(currentPosition);
+        if (_mazeMap[currentPosition][1])
+        {
+            _currX += 1;
+        }
+        else{
+            Console.WriteLine("Can't go that way!");
+        }
+
     }
 
     /// <summary>
@@ -46,6 +68,14 @@ public class Maze {
     /// </summary>
     public void MoveUp() {
         // FILL IN CODE
+        currentPosition = (_currX, _currY);
+        if (_mazeMap[currentPosition][2])
+        {
+            _currY -= 1;
+        }
+        else{
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -54,6 +84,14 @@ public class Maze {
     /// </summary>
     public void MoveDown() {
         // FILL IN CODE
+        currentPosition = (_currX, _currY);
+        if (_mazeMap[currentPosition][3])
+        {
+            _currY += 1;
+        }
+        else{
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     public void ShowStatus() {

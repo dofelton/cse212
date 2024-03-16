@@ -11,6 +11,8 @@
  * Each row represents the player's stats for a single season with a single team.
  */
 
+using System.Runtime.InteropServices;
+using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
 
 public class Basketball
@@ -28,6 +30,12 @@ public class Basketball
             var playerId = fields[0];
             var points = int.Parse(fields[8]);
         }
+        if (let x == playerId)
+        x += points;
+        // declare a new variable to hold total points of each players
+        // create a list of total points value, sort that list highest to lowest
+        // key will be the name of the player : value total points
+        // print the key to the highest values
 
         Console.WriteLine($"Players: {{{string.Join(", ", players)}}}");
 
