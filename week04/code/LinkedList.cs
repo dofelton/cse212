@@ -28,6 +28,14 @@ public class LinkedList : IEnumerable<int> {
     /// </summary>
     public void InsertTail(int value) {
         // TODO Problem 1
+        // create a new node
+        // set previous of new node to tail
+        // set next of current tail to new node
+        // reassign tail to new node
+        Node newNode = new Node(value);
+        newNode.Prev = _tail;
+        _tail.Next = newNode;
+        _tail = newNode;
     }
 
 
@@ -56,6 +64,10 @@ public class LinkedList : IEnumerable<int> {
     /// </summary>
     public void RemoveTail() {
         // TODO Problem 2
+        // reassign the next of the second to last node to null
+        // reassign the value of tail to the second to last node
+        _tail.Prev.Next = null;
+        _tail = _tail.Prev;
     }
 
     /// <summary>
@@ -94,6 +106,15 @@ public class LinkedList : IEnumerable<int> {
     /// </summary>
     public void Remove(int value) {
         // TODO Problem 3
+        // check if value is head or tail, if so call RemoveHead or RemoveTail
+        // reassign the Next to the node after current, reassign Prev to the node before current
+        var curr = _head;
+        while (curr is not null) {
+            if (curr.Data == value) {
+                curr.Next.Prev = curr.Prev;
+                curr.Prev.Next = curr.Next;
+            }
+        }
     }
 
     /// <summary>
@@ -101,6 +122,13 @@ public class LinkedList : IEnumerable<int> {
     /// </summary>
     public void Replace(int oldValue, int newValue) {
         // TODO Problem 4
+        // iterate through a list, if an element is equivalent to the oldValue reassign it to newValue
+        var curr = _head;
+        while (curr is not null) {
+            if (curr.Data == oldValue) {
+                curr = newValue;
+            }
+        }
     }
 
     /// <summary>
@@ -127,7 +155,11 @@ public class LinkedList : IEnumerable<int> {
     /// </summary>
     public IEnumerable Reverse() {
         // TODO Problem 5
-        yield return 0; // replace this line with the correct yield return statement(s)
+        var curr = _tail;
+        while (curr is not null) {
+        yield return curr; // replace this line with the correct yield return statement(s)
+        curr = curr.Prev;
+        }
     }
 
     public override string ToString() {
