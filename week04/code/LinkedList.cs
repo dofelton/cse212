@@ -126,7 +126,7 @@ public class LinkedList : IEnumerable<int> {
         var curr = _head;
         while (curr is not null) {
             if (curr.Data == oldValue) {
-                curr = newValue;
+                curr.Data = newValue;
             }
         }
     }
