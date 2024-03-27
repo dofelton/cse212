@@ -147,7 +147,10 @@ public static class RecursionTester {
     /// </summary>
     public static int SumSquaresRecursive(int n) {
         // TODO Start Problem 1
+        if (n <= 0) {
         return 0;
+        }
+        return n * n + SumSquaresRecursive(n-1);
     }
 
     /// <summary>
@@ -171,6 +174,18 @@ public static class RecursionTester {
     /// </summary>
     public static void PermutationsChoose(string letters, int size, string word = "") {
         // TODO Start Problem 2
+        if (word.Length == size) {
+            Console.WriteLine(word);
+            return;
+        }
+
+        for (int i = 0; i < letters.Length; i++) {
+            permutation[index] = letters[i];
+            used[i] = true;
+            PermutationsChoose(letters, word, index + 1, used);
+            used[i] = false;
+        }
+        }
     }
 
     /// <summary>
@@ -228,9 +243,12 @@ public static class RecursionTester {
             return 2;
         if (s == 3)
             return 4;
+        else if (remember.ContainsKey(s))
+            return remember[s];
 
         // Solve using recursion
         decimal ways = CountWaysToClimb(s - 1) + CountWaysToClimb(s - 2) + CountWaysToClimb(s - 3);
+        remember[s] = ways;
         return ways;
     }
 
@@ -249,6 +267,16 @@ public static class RecursionTester {
     /// </summary>
     public static void WildcardBinary(string pattern) {
         // TODO Start Problem 4
+        List<string> results = new List<string>();
+        string current = "";
+        
+        if (pattern.Length == 0) {
+            results.Add("");
+            return;
+        }
+        if (pattern[0] == '*') {
+            WildcardBinary(pattern.Substring(1),)
+        }
     }
 
     /// <summary>
