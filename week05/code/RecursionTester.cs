@@ -147,7 +147,13 @@ public static class RecursionTester {
     /// </summary>
     public static int SumSquaresRecursive(int n) {
         // TODO Start Problem 1
-        return 0;
+        if (n <= 0) {
+            return 0;
+        }
+        else {
+            // n^2 + (n-1)^2
+            return n * n + SumSquaresRecursive(n-1);
+        }
     }
 
     /// <summary>
@@ -171,6 +177,15 @@ public static class RecursionTester {
     /// </summary>
     public static void PermutationsChoose(string letters, int size, string word = "") {
         // TODO Start Problem 2
+        if (word.Length == size) {
+            Console.WriteLine(word);
+        }
+        else {
+            for (var i=0; i< letters.Length; i++) {
+                var lettersLeft = letters.Remove(i, 1);
+                PermutationsChoose(lettersLeft, word + letters[i]);
+            }
+        }
     }
 
     /// <summary>
